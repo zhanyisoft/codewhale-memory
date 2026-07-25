@@ -52,3 +52,14 @@ Go + nhooyr.io/websocket + JWT + Redis Streams + PG COPY + 单文件 SPA 前端
   curl -s https://api.github.com/repos/Hmbown/CodeWhale/releases/latest
   ```
 
+### Codewhale 运行模式
+三种模式，空闲时按 `Tab` 循环切换，或用 `/mode` 命令：
+
+| 模式 | 说明 |
+|------|------|
+| **Plan** | 只读模式，可查看分析代码，不能执行命令或编辑文件 |
+| **Act** | 交互编码模式，可检查、编辑、使用 Shell 和工具 |
+| **Operate** | 多任务协调模式，功能同 Act，偏好后台 worker 处理独立/并行/长时任务 |
+
+切换命令：`/mode plan`、`/mode act`、`/mode operate`
+
