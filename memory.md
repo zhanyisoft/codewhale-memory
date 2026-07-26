@@ -97,7 +97,9 @@ Go + nhooyr.io/websocket + JWT + Redis Streams + PG COPY + 单文件 SPA 前端
 - Nginx 配置：`/root/code/my-app/.docker/nginx/`
 
 ## Web 工具限制
-- Web search ✅ 正常
-- Web fetch ❌ 被沙箱拦截（DNS 解析到 198.18.0.0/15 私有地址段）
+
+- 背景：WSL2 NAT 模式下 Web search 不可用，切换 mirrored 后恢复
+- Web search ✅ 正常（mirrored 已解决）
+- Web fetch ❌ 仍然不可用（沙箱 IP 检查，mirrored 无法解决）（DNS 解析到 198.18.0.0/15 私有地址段）
 - 替代方案：用 curl 抓取网页
 - 不要动系统 DNS（10.255.255.254），可能导致断网
