@@ -95,3 +95,9 @@ Go + nhooyr.io/websocket + JWT + Redis Streams + PG COPY + 单文件 SPA 前端
 - Laravel 项目：`/root/code/my-app/`
 - 测试页面：`/root/codewhale/test4/web-test/`
 - Nginx 配置：`/root/code/my-app/.docker/nginx/`
+
+## Web 工具限制
+- Web search ✅ 正常
+- Web fetch ❌ 被沙箱拦截（DNS 解析到 198.18.0.0/15 私有地址段）
+- 替代方案：用 curl 抓取网页
+- 不要动系统 DNS（10.255.255.254），可能导致断网
