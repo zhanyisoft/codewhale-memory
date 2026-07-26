@@ -63,3 +63,35 @@ Go + nhooyr.io/websocket + JWT + Redis Streams + PG COPY + 单文件 SPA 前端
 
 切换命令：`/mode plan`、`/mode act`、`/mode operate`
 
+# 环境记忆
+
+## 网络模式
+
+- 当前为 **WSL2 mirrored 网络模式**（Linux 6.18.35.2-microsoft-standard-WSL2）
+- Windows 宿主 IP：`192.168.31.224`
+- Docker 版本：`29.6.2`
+
+## Docker 端口映射行为
+
+- Windows `localhost` 自动转发到 WSL2 内 Docker 映射的端口（mirrored 模式自带能力，无需配置）
+- **非特权端口（≥1024）**：`docker run -p` 完全正常，Windows 浏览器可直接访问
+- **特权端口（<1024，如 80）**：TCP 握手正常但响应体被截断，浏览器显示空白页 —— 避开，用高位端口替代
+
+## 现有服务
+
+| 容器 | 端口 | 用途 |
+|:---|:---|:---|
+| `laravel-nginx` | 8080 | Laravel 聊天室（原 80 → 已改为 8080） |
+| `test-web` | 8081 | Docker 端口映射测试页 |
+| `laravel-app` | — | PHP-FPM 8.4 |
+| `laravel-mysql` | 3306 | MySQL 8.0 |
+| `postgres` | 5432 | PostgreSQL 16 |
+| `redis` | 6379 | Redis 7 |
+| `laravel-queue` | — | Queue Worker |
+| `laravel-reverb` | — | WebSocket |
+
+## 项目路径
+
+- Laravel 项目：`/root/code/my-app/`
+- 测试页面：`/root/codewhale/test4/web-test/`
+- Nginx 配置：`/root/code/my-app/.docker/nginx/`
